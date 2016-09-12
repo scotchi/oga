@@ -127,6 +127,10 @@ describe Oga::XML::Element do
     it 'returns the value of an attribute' do
       @element.get('foo').should == 'bar'
     end
+
+    it 'returns the value of an attribute' do
+      @element['foo'].should == 'bar'
+    end
   end
 
   describe '#add_attribute' do
@@ -159,6 +163,22 @@ describe Oga::XML::Element do
       @element.set('class', 'foo')
 
       @element.get('class').should == 'foo'
+    end
+
+    it 'adds a new attribute' do
+      @element['class'] = 'foo'
+
+      @element['class'].should == 'foo'
+    end
+
+    it 'converts symbols to strings in names' do
+      @element[:foo] = 'foo'
+      @element[:foo].should == 'foo'
+      @element['foo'].should == 'foo'
+
+      @element['bar'] = 'bar'
+      @element[:bar].should == 'bar'
+      @element['bar'].should == 'bar'
     end
 
     it 'adds a new attribute with a namespace' do

@@ -43,6 +43,22 @@ describe Oga::XML::Node do
     end
   end
 
+  describe '#<<' do
+    before do
+      @element = Oga::XML::Element.new
+      @node = described_class.new
+    end
+    it 'appends a child node' do
+      @element << @node
+      @element.children.first.should == @node
+    end
+
+    it 'appends a text node' do
+      @element << 'foo'
+      @element.inner_text.should == 'foo'
+    end
+  end
+
   describe '#parent' do
     it 'returns the parent of the node' do
       owner = described_class.new

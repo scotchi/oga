@@ -42,6 +42,27 @@ describe Oga::XML::Document do
     end
   end
 
+  describe '#root_element' do
+    before do
+      @document = described_class.new
+    end
+
+    it 'returns first element' do
+      child = Oga::XML::Element.new(:name => 'foo')
+      @document.children << child
+      @document.root_element.should == child
+      @document.root_element.name.should == 'foo'
+    end
+
+    it 'returns first element even when other nodes present' do
+      @document.children << Oga::XML::Comment.new(:text => 'foo')
+      child = Oga::XML::Element.new(:name => 'foo')
+      @document.children << child
+      @document.root_element.should == child
+      @document.root_element.name.should == 'foo'
+    end
+  end
+
   describe '#to_xml' do
     before do
       child = Oga::XML::Comment.new(:text => 'foo')
