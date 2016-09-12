@@ -51,7 +51,6 @@ describe Oga::XML::Document do
       child = Oga::XML::Element.new(:name => 'foo')
       @document.children << child
       @document.root_element.should == child
-      @document.root_element.name.should == 'foo'
     end
 
     it 'returns first element even when other nodes present' do
@@ -59,7 +58,6 @@ describe Oga::XML::Document do
       child = Oga::XML::Element.new(:name => 'foo')
       @document.children << child
       @document.root_element.should == child
-      @document.root_element.name.should == 'foo'
     end
   end
 
