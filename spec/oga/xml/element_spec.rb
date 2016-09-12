@@ -201,6 +201,13 @@ describe Oga::XML::Element do
     end
   end
 
+  describe '#[]=' do
+    it 'is an alias to set' do
+      described_class.instance_method(:[]=).should ==
+        described_class.instance_method(:set)
+    end
+  end
+
   describe '#unset' do
     before do
       @element = described_class.new
