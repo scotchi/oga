@@ -127,9 +127,12 @@ describe Oga::XML::Element do
     it 'returns the value of an attribute' do
       @element.get('foo').should == 'bar'
     end
+  end
 
-    it 'returns the value of an attribute' do
-      @element['foo'].should == 'bar'
+  describe '#[]' do
+    it 'is an alias to get' do
+      described_class.instance_method(:[]).should ==
+        described_class.instance_method(:get)
     end
   end
 
