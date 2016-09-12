@@ -168,20 +168,12 @@ describe Oga::XML::Element do
       @element.get('class').should == 'foo'
     end
 
-    it 'adds a new attribute' do
-      @element['class'] = 'foo'
-
-      @element['class'].should == 'foo'
-    end
-
     it 'converts symbols to strings in names' do
-      @element[:foo] = 'foo'
-      @element[:foo].should == 'foo'
-      @element['foo'].should == 'foo'
+      @element.set(:foo, 'foo')
+      @element.get('foo').should == 'foo'
 
-      @element['bar'] = 'bar'
+      @element.set('bar', 'bar')
       @element[:bar].should == 'bar'
-      @element['bar'].should == 'bar'
     end
 
     it 'adds a new attribute with a namespace' do
