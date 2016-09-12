@@ -93,7 +93,7 @@ module Oga
         found ? found.value : nil
       end
 
-      alias [] get
+      alias_method :[], :get
 
       # Adds a new attribute to the element.
       #
@@ -135,7 +135,7 @@ module Oga
         end
       end
 
-      alias []= set
+      alias_method :[]=, :set
 
       # Removes an attribute from the element.
       #
