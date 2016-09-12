@@ -64,8 +64,6 @@ module Oga
       #
       # @return [Oga::XML::Attribute]
       def attribute(name)
-        name = name.to_s if name.is_a?(Symbol)
-
         if html?
           ns = nil
         else
@@ -117,13 +115,7 @@ module Oga
         if found
           found.value = value
         else
-          name = name.to_s if name.is_a?(Symbol)
-
-          if name.include?(':')
-            ns, name = name.split(':')
-          else
-            ns = nil
-          end
+          name, ns = split_name(name)
 
           attr = Attribute.new(
             :name           => name,
