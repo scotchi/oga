@@ -55,21 +55,6 @@ module Oga
         end
       end
 
-      # Adds a child (or creates a child text node) to this node.
-      #
-      # @param [Oga::XML::Node|String] child
-
-      def <<(child)
-        child = Text.new(:text => child) if child.is_a?(String)
-
-        unless child.is_a?(Node)
-          raise ArgumentError, 'Can only add nodes or text.'
-        end
-
-        children << child
-        self
-      end
-
       # Returns the parent node of the current node. If there is no parent node
       # `nil` is returned instead.
       #
