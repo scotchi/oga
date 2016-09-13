@@ -57,12 +57,6 @@ module Oga
         self
       end
 
-      # Returns the top level element in the document.
-
-      def root_element
-        @children.find { |child| child.is_a?(Element) }
-      end
-
       # @return [TrueClass|FalseClass]
       def html?
         type.equal?(:html)
